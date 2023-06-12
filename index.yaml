@@ -3,6 +3,16 @@ entries:
   vaultwarden:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-06-12T19:40:42.64023689Z"
+    description: A Helm chart for Vaultwarden
+    digest: 158a5de219c50348dc526d1d8b6010e8388ef1f2b1d200250e18832623c81245
+    name: vaultwarden
+    type: application
+    urls:
+    - https://github.com/solidassassin/helm-charts/releases/download/vaultwarden-0.2.0/vaultwarden-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-06-12T18:32:54.29035276Z"
     description: A Helm chart for Vaultwarden
     digest: 22699f64b6c945f439822bbd4a49a553c37add954116b449eacd8948014c2cf5
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/solidassassin/helm-charts/releases/download/vaultwarden-0.1.0/vaultwarden-0.1.0.tgz
     version: 0.1.0
-generated: "2023-06-12T18:32:54.29035976Z"
+generated: "2023-06-12T19:40:42.640245891Z"
