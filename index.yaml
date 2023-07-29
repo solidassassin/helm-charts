@@ -2,6 +2,15 @@ apiVersion: v1
 entries:
   memos:
   - apiVersion: v2
+    created: "2023-07-29T23:21:18.072106924Z"
+    description: A Helm chart for Memos app
+    digest: ee47e1cd16a9892adc8cd0b590b0b4a952d33f907a681561b08e35d0016ebd97
+    name: memos
+    type: application
+    urls:
+    - https://github.com/solidassassin/helm-charts/releases/download/memos-0.5.0/memos-0.5.0.tgz
+    version: 0.5.0
+  - apiVersion: v2
     created: "2023-07-29T23:12:21.300917439Z"
     description: A Helm chart for Memos app
     digest: a6a57492e0f63b85d3791182a878e88aefe9f69239276a9c9ac018a85058056d
@@ -88,4 +97,4 @@ entries:
     urls:
     - https://github.com/solidassassin/helm-charts/releases/download/vaultwarden-0.1.0/vaultwarden-0.1.0.tgz
     version: 0.1.0
-generated: "2023-07-29T23:12:21.428460001Z"
+generated: "2023-07-29T23:21:18.072171121Z"
