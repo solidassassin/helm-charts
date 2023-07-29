@@ -15,7 +15,7 @@ envFromSecret: []
   #   key: ""
 
 persistence:
-  storageClassName: ""
+  storageClass: ""
   size: ""
 
 imagePullSecrets: []
