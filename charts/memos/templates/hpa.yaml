@@ -2,15 +2,15 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "vaultwarden.fullname" . }}
+  name: {{ include "memos.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "vaultwarden.labels" . | nindent 4 }}
+    {{- include "memos.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: StatefulSet
-    name: {{ include "vaultwarden.fullname" . }}
+    name: {{ include "memos.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:

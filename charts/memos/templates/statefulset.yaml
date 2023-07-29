@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ include "vaultwarden.fullname" . }}
+  name: {{ include "memos.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "vaultwarden.labels" . | nindent 4 }}
+    {{- include "memos.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "vaultwarden.selectorLabels" . | nindent 6 }}
+      {{- include "memos.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -19,13 +19,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "vaultwarden.selectorLabels" . | nindent 8 }}
+        {{- include "memos.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "vaultwarden.serviceAccountName" . }}
+      serviceAccountName: {{ include "memos.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -50,20 +50,20 @@ spec:
           {{- end }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 5230
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /alive
+              path: /
               port: http
           readinessProbe:
             httpGet:
-              path: /alive
+              path: /
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-            - mountPath: "/data"
+            - mountPath: "/var/opt/memos"
               name: data
   volumeClaimTemplates:
     - metadata:
