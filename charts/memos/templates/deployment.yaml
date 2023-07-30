@@ -1,7 +1,8 @@
+{{- $fullName := include "memos.fullname" . -}}
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
-  name: {{ include "memos.fullname" . }}
+  name: {{ $fullName }}
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "memos.labels" . | nindent 4 }}
@@ -65,16 +66,10 @@ spec:
           volumeMounts:
             - mountPath: "/var/opt/memos"
               name: data
-  volumeClaimTemplates:
-    - metadata:
-        name: data
-      spec:
-        storageClassName: {{ .Values.persistence.storageClass }}
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: {{ .Values.persistence.size }}
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ $fullName }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

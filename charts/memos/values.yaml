@@ -18,6 +18,7 @@ envFromSecret: []
 persistence:
   storageClass: ""
   size: ""
+  accessModes: []
 
 imagePullSecrets: []
 nameOverride: ""
